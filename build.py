@@ -13,6 +13,8 @@ ALLMUSIC = "https://www.allmusic.com/artist/mickey-cash-mn0003063108"
 ALLMUSIC_ALBUM = "https://www.allmusic.com/album/victory-mw0002489502"
 YT_CHANNEL = "https://www.youtube.com/@OFFICIALMICKEYCASH"
 STAUG = "https://www.visitstaugustine.com/musician/mickey-cash"
+# Fourthwall shop address. Leave "" until the shop exists; the Shop section then says "coming soon".
+SHOP_URL = ""
 
 # Drop files into assets/images and assets/audio, then list them here.
 HERO_IMAGE = "assets/images/hero.jpg"          # used only if the file exists
@@ -60,6 +62,8 @@ cover = (f'<img class="cover" src="{VICTORY_COVER}" alt="Victory album cover" wi
 
 tracks_html = "".join(f'<li><span>{e(t)}</span><span>{d}</span></li>' for t, d in TRACKS)
 
+shop_html = (f'<p>Official Mickey Cash merch.</p><p><a class="btn" href="{SHOP_URL}" target="_blank" rel="noopener">Visit the shop</a></p>'
+             if SHOP_URL else '<p>Mickey Cash merch is on its way. Check back soon.</p>')
 key_attr = e(WEB3FORMS_KEY)
 
 PAGE = f'''<!DOCTYPE html>
@@ -86,6 +90,7 @@ PAGE = f'''<!DOCTYPE html>
     <li><a href="#watch">Watch &amp; Listen</a></li>
     <li><a href="#music">Music</a></li>
     <li><a href="#press">Press</a></li>
+    <li><a href="#shop">Shop</a></li>
     <li><a href="#contact">Booking</a></li>
   </ul></nav>
 </header>
@@ -151,6 +156,11 @@ PAGE = f'''<!DOCTYPE html>
       <p><a href="{ALLMUSIC}" target="_blank" rel="noopener">Artist profile →</a></p>
     </div>
   </div>
+</section>
+
+<section id="shop">
+  <h2>Shop</h2>
+  {shop_html}
 </section>
 
 <section id="contact">
