@@ -95,7 +95,7 @@ PAGE = f'''<!DOCTYPE html>
   <div class="hero-text">
     <p class="kicker">Americana · Alt-Country · Singer-Songwriter</p>
     <h1>Mickey<br>Cash</h1>
-    <p class="lede">A voice powerful and resonant enough to wake the dead.</p>
+    <p class="lede">Old-time country, Americana, and rock, sung with a big, resonant voice.</p>
     <p><a class="btn" href="#watch">Watch &amp; listen</a> <a class="btn ghost" href="#contact">Book Mickey</a></p>
   </div>
   {hero_media}
