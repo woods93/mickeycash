@@ -183,7 +183,7 @@ PAGE = f'''<!DOCTYPE html>
 
 <section id="family">
   <h2>Family</h2>
-  <p class="lede">The artists and makers we have built websites for.</p>
+  <p class="lede">Artists, makers, poets, and saints.</p>
   <div class="fam-grid">{family_html}</div>
 </section>
 
