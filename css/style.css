@@ -64,3 +64,13 @@ h3{font-size:1.4rem;margin:1.6rem 0 .4rem}
 .form-status.ok{color:#8fd89a}
 .form-status.err{color:#ff9a8a}
 .foot{text-align:center;color:var(--muted);padding:1.6rem;border-top:2px solid var(--rust);font-size:.9rem}
+
+/* Family section */
+.fam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1.25rem;margin:1.5rem 0}
+.fam-card{background:var(--panel);border:1px solid var(--line);border-radius:.5rem;overflow:hidden;padding-bottom:1rem}
+.fam-card .fam-pic img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.fam-card h3{margin:.8rem 1rem 0;font:700 1.15rem var(--display)}
+.fam-card h3 a{color:var(--text);text-decoration:none}
+.fam-card h3 a:hover{color:var(--rust)}
+.fam-card p{margin:.5rem 1rem 0;color:var(--muted);font-size:.95rem;line-height:1.5}
+.lede{color:var(--muted)}

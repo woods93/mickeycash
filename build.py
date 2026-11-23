@@ -62,6 +62,23 @@ cover = (f'<img class="cover" src="{VICTORY_COVER}" alt="Victory album cover" wi
 
 tracks_html = "".join(f'<li><span>{e(t)}</span><span>{d}</span></li>' for t, d in TRACKS)
 
+def _family_cards():
+    import json
+    with open(os.path.join(ROOT, "family.json"), encoding="utf-8") as fh:
+        data = json.load(fh)
+    out = []
+    for f in data:
+        if f["id"] == "mickey-cash":
+            continue
+        pic = ('<a class="fam-pic" href="%s" rel="noopener"><img src="%s" alt="%s" loading="lazy" '
+               'referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>'
+               % (e(f["url"]), e(f["image"]), e(f["name"]))) if f.get("image") else ""
+        out.append('<article class="fam-card">%s<h3><a href="%s" rel="noopener">%s</a></h3><p>%s</p></article>'
+                   % (pic, e(f["url"]), e(f["name"]), e(f.get("blurb", ""))))
+    return "".join(out)
+
+
+family_html = _family_cards()
 shop_html = (f'<p>Official Mickey Cash merch.</p><p><a class="btn" href="{SHOP_URL}" target="_blank" rel="noopener">Visit the shop</a></p>'
              if SHOP_URL else '<p>Mickey Cash merch is on its way. Check back soon.</p>')
 key_attr = e(WEB3FORMS_KEY)
@@ -79,7 +96,7 @@ PAGE = f'''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=fam1">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -91,6 +108,7 @@ PAGE = f'''<!DOCTYPE html>
     <li><a href="#music">Music</a></li>
     <li><a href="#press">Press</a></li>
     <li><a href="#shop">Shop</a></li>
+    <li><a href="#family">Family</a></li>
     <li><a href="#contact">Booking</a></li>
   </ul></nav>
 </header>
@@ -161,6 +179,12 @@ PAGE = f'''<!DOCTYPE html>
 <section id="shop">
   <h2>Shop</h2>
   {shop_html}
+</section>
+
+<section id="family">
+  <h2>Family</h2>
+  <p class="lede">The artists and makers we have built websites for.</p>
+  <div class="fam-grid">{family_html}</div>
 </section>
 
 <section id="contact">
