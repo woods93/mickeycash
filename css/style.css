@@ -21,7 +21,8 @@ h2::after{content:"";display:block;width:64px;height:4px;background:var(--cobalt
 h3{font-size:1.4rem;margin:1.6rem 0 .4rem}
 .hero{display:grid;gap:2rem;align-items:center;min-height:70vh;padding-top:3rem}
 .hero.has-photo{grid-template-columns:3fr 2fr}
-.kicker{font:500 1rem var(--label);letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin:0 0 .6rem}
+.kicker{font:500 .76rem var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin:0 0 .6rem;white-space:nowrap}
+@media(max-width:700px){.kicker{white-space:normal;font-size:.72rem;letter-spacing:.12em}}
 .hero h1{line-height:0;margin:0}
 .hero h1 img{display:block;width:min(100%,560px);height:auto}
 .lede{font:italic 1.5rem var(--display);color:var(--muted);max-width:30ch;margin:1.2rem 0 1.6rem}
