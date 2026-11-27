@@ -122,9 +122,9 @@ PAGE = f'''<!DOCTYPE html>
 
 <section id="top" class="{hero_cls}">
   <div class="hero-text">
-    <p class="kicker">Americana · Alt-Country · Singer-Songwriter</p>
+    <p class="kicker">Blues · Rock · Americana · Alt-Country · Singer-Songwriter</p>
     <h1><img src="assets/images/logo.png" alt="Mickey Cash" width="560" height="195"></h1>
-    <p class="lede">Old-time country, Americana, and rock, sung with a big, resonant voice.</p>
+    <p class="lede">Cosmic American Blues, sung with all the soul a heart desires.</p>
     <p><a class="btn" href="#watch">Watch &amp; listen</a> <a class="btn ghost" href="#contact">Book Mickey</a></p>
   </div>
   {hero_media}
