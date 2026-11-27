@@ -13,8 +13,15 @@ ALLMUSIC = "https://www.allmusic.com/artist/mickey-cash-mn0003063108"
 ALLMUSIC_ALBUM = "https://www.allmusic.com/album/victory-mw0002489502"
 YT_CHANNEL = "https://www.youtube.com/@OFFICIALMICKEYCASH"
 STAUG = "https://www.visitstaugustine.com/musician/mickey-cash"
+STAUG_IMG = "https://www.visitstaugustine.com/sites/default/files/styles/meta_16x9/public/2025-05/mickey-cash-headshot-25x15-WEB.jpg?itok=P-5lSCr_"
+
+TEES = [
+    ("mickey-cash-logo-tee-navy", "assets/images/tee-navy.jpg", "Logo Tee: Navy", "Dusty rose logo on navy", "Mickey Cash logo tee, rose logo on a navy shirt"),
+    ("mickey-cash-logo-tee-blossom", "assets/images/tee-blossom.jpg", "Logo Tee: Blossom", "Cobalt logo on soft pink", "Mickey Cash logo tee, cobalt logo on a soft pink shirt"),
+    ("mickey-cash-logo-tee-black", "assets/images/tee-black.jpg", "Logo Tee: Black", "Dusty rose logo on black", "Mickey Cash logo tee, rose logo on a black shirt"),
+]
 # Fourthwall shop address. Leave "" until the shop exists; the Shop section then says "coming soon".
-SHOP_URL = ""
+SHOP_URL = "https://mickey-cash-shop.fourthwall.com"
 
 # Drop files into assets/images and assets/audio, then list them here.
 HERO_IMAGE = "assets/images/hero.jpg"          # used only if the file exists
@@ -79,8 +86,21 @@ def _family_cards():
 
 
 family_html = _family_cards()
-shop_html = (f'<p>Official Mickey Cash merch.</p><p><a class="btn" href="{SHOP_URL}" target="_blank" rel="noopener">Visit the shop</a></p>'
-             if SHOP_URL else '<p>Mickey Cash merch is on its way. Check back soon.</p>')
+def _shop():
+    if not SHOP_URL:
+        return '<p>Mickey Cash merch is on its way. Check back soon.</p>'
+    cards = "".join(
+        f'<a class="product" href="{SHOP_URL}/products/{slug}" target="_blank" rel="noopener">'
+        f'<img src="{img}" alt="{e(alt)}" loading="lazy" width="300" height="300">'
+        f'<span class="product-name">{e(name)}</span><span class="product-price">$30</span>'
+        f'<span class="product-note">{e(note)}</span></a>'
+        for slug, img, name, note, alt in TEES)
+    return (f'<p>Official Mickey Cash merch. Logo tees are printed and shipped on demand, $30 each.</p>'
+            f'<div class="products">{cards}</div>'
+            f'<p><a class="btn" href="{SHOP_URL}" target="_blank" rel="noopener">Visit the shop</a></p>')
+
+
+shop_html = _shop()
 key_attr = e(WEB3FORMS_KEY)
 
 PAGE = f'''<!DOCTYPE html>
@@ -102,7 +122,7 @@ PAGE = f'''<!DOCTYPE html>
 <link rel="icon" href="assets/images/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css?v=brand2">
+<link rel="stylesheet" href="css/style.css?v=brand3">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -174,8 +194,11 @@ PAGE = f'''<!DOCTYPE html>
     </div>
     <div>
       <h3>Visit St. Augustine</h3>
-      <p>Artist feature on the city’s official visitor site, covering Mickey’s voice, her Cash family roots, and her cover of “Ring of Fire.”</p>
-      <p><a href="{STAUG}" target="_blank" rel="noopener">Read the feature →</a></p>
+      <a class="linkthumb" href="{STAUG}" target="_blank" rel="noopener" aria-label="Read the Visit St. Augustine feature on Mickey Cash">
+        <img src="{STAUG_IMG}" alt="Mickey Cash, singer and songwriter, against a grey wall" loading="lazy" referrerpolicy="no-referrer" width="480" height="270" onerror="this.parentNode.remove()">
+        <span class="go" aria-hidden="true">Read the feature</span>
+      </a>
+      <p class="small">Artist feature on the city’s official visitor site, covering Mickey’s voice, her Cash family roots, and her cover of “Ring of Fire.”</p>
       <h3>AllMusic</h3>
       <p><a href="{ALLMUSIC}" target="_blank" rel="noopener">Artist profile →</a></p>
     </div>

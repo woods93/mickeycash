@@ -77,3 +77,17 @@ h3{font-size:1.4rem;margin:1.6rem 0 .4rem}
 .fam-card h3 a:hover{color:var(--rust)}
 .fam-card p{margin:.5rem 1rem 0;color:var(--muted);font-size:.95rem;line-height:1.5}
 .lede{color:var(--muted)}
+
+/* Press link thumbnail (matches the video thumbnail size) */
+.linkthumb{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000}
+.linkthumb img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .2s;display:block}
+.linkthumb:hover img{opacity:1}
+.linkthumb .go{position:absolute;left:0;bottom:0;right:0;padding:.5rem .9rem;background:linear-gradient(transparent,rgba(11,26,94,.92));color:var(--text);font:500 .95rem var(--label);letter-spacing:.12em;text-transform:uppercase}
+/* Shop */
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.4rem;margin:1.4rem 0}
+.product{display:grid;gap:.2rem;text-decoration:none;color:var(--text);background:var(--panel);border:1px solid var(--line);padding-bottom:1rem}
+.product img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.product:hover{border-color:var(--rust)}
+.product-name{font:700 1.1rem var(--display);margin:.7rem 1rem 0}
+.product-price{margin:0 1rem;color:var(--rust);font:500 1rem var(--label);letter-spacing:.1em}
+.product-note{margin:0 1rem;color:var(--muted);font-size:.92rem}
